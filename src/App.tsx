@@ -24,13 +24,21 @@ const startState = () => {
 function App() {
     const [blockList, setBlockList] = useState(startState());
 
-    let counter = 0
+    const counter = () => {
+        const count = blockList.filter((block) => {
+            return block.clicked
+        })
+        return count.length
+    }
     const click = (idx: number) => {
-        counter += 1;
-        console.log(counter);
         const blockListCopy = [...blockList];
         blockListCopy[idx].clicked = true;
         setBlockList([...blockListCopy]);
+    }
+
+    const resetGame = () => {
+        const blockListCopy = startState();
+        setBlockList([...blockListCopy])
     }
 
     const blocks: React.ReactNode = (
@@ -48,8 +56,8 @@ function App() {
             <Field>
                 {blocks}
             </Field>
-            <Counter counter={counter}></Counter>
-            <Button></Button>
+            <Counter counter={counter()}></Counter>
+            <Button onClick={resetGame}></Button>
         </>
     )
 }
