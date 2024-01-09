@@ -13,7 +13,9 @@ const Block: React.FC <Props> = ({hasItem, clicked, onClick}) => {
         width: "30px",
         height: "30px",
         backgroundColor: "green",
-        margin: "5px"
+        color: "green",
+        margin: "5px",
+        cursor: "pointer"
     };
 
     if (clicked) {
